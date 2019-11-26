@@ -1,0 +1,38 @@
+<project name="01_Test" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <property name="version" value="1.0-SNAPSHOT"/>
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <path id="build-classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="resolve">
+        <ivy:retrieve/>
+    </target>
+
+    <target name="compile" depends="resolve">
+        <mkdir dir="${build}"/>
+
+        <javac srcdir="${src}" destdir="${build}" classpathref="build-classpath"/>
+    </target>
+
+    <target name="package" depends="compile">
+        <mkdir dir="${dist}"/>
+
+        <manifestclasspath property="lib.list" jarfile="${dist}/test-${version}.jar">
+            <classpath refid="build-classpath"/>
+        </manifestclasspath>
+
+        <jar file="${dist}/test-${version}.jar">
+            <fileset dir="${build}"/>
+            <manifest>
+                <attribute name="Main-Class" value="de.cwansart.Main"/>
+                <attribute name="Class-Path" value="${lib.list}"/>
+            </manifest>
+        </jar>
+    </target>
+</project>
