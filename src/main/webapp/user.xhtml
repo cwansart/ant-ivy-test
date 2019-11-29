@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <title>User Page</title>
+</head>
+<body>
+
+<h1><h:outputText value="#{userController.greeting}"/></h1>
+
+<div>
+    <h2>Details</h2>
+
+    <ui:fragment rendered="#{userController.user.username != null}">
+        <div>
+            <b>Username:</b> <h:outputText value="#{userController.user.username}"/>
+        </div>
+    </ui:fragment>
+
+    <ui:fragment rendered="#{userController.user.password != null}">
+        <div>
+            <b>Password:</b> <h:outputText value="#{userController.user.password}"/>
+        </div>
+    </ui:fragment>
+</div>
+
+<div>
+    <h2>Bearbeiten</h2>
+
+    <h:form id="user-form">
+        <h:panelGrid columns="2">
+            <h:outputLabel for="username-input" value="Username"/>
+            <h:inputText id="username-input" value="#{userController.user.username}"/>
+
+            <h:outputLabel for="password-input" value="Password"/>
+            <h:inputSecret id="password-input" value="#{userController.user.password}"/>
+        </h:panelGrid>
+
+        <h:commandButton value="save" action="#{userController.saveUser()}">
+            <f:ajax execute="@form" render="@all"/>
+        </h:commandButton>
+    </h:form>
+</div>
+
+</body>
+</html>

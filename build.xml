@@ -23,16 +23,14 @@
     <target name="package" depends="compile">
         <mkdir dir="${dist}"/>
 
-        <manifestclasspath property="lib.list" jarfile="${dist}/test-${version}.jar">
-            <classpath refid="build-classpath"/>
-        </manifestclasspath>
+        <war destfile="${dist}/test.war" webxml="src/main/webapp/WEB-INF/web.xml" >
+            <fileset dir="src/main/webapp"/>
+            <lib dir="lib"/>
+            <classes dir="build"/>
+        </war>
+    </target>
 
-        <jar file="${dist}/test-${version}.jar">
-            <fileset dir="${build}"/>
-            <manifest>
-                <attribute name="Main-Class" value="de.cwansart.Main"/>
-                <attribute name="Class-Path" value="${lib.list}"/>
-            </manifest>
-        </jar>
+    <target name="clean-cache" description="Purge ivy cache">
+        <ivy:cleancache/>
     </target>
 </project>
