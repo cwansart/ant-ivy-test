@@ -1,10 +1,14 @@
 <ivy-module version="2.0">
     <info organisation="de.cwansart" module="01_test"/>
     <dependencies>
+        <!-- TODO: use conf for provided, test etc. -->
         <dependency org="org.apache.commons" name="commons-lang3" rev="3.9"/>
+
         <dependency org="javax.faces" name="jsf-api" rev="2.1"/>
         <dependency org="javax.faces" name="javax.faces-api" rev="2.3"/>
         <dependency org="javax.el" name="javax.el-api" rev="3.0.0"/>
         <dependency org="javax.inject" name="javax.inject" rev="1"/>
+
+        <dependency org="org.omnifaces" name="omnifaces" rev="3.4"/>
     </dependencies>
 </ivy-module>
