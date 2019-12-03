@@ -1,0 +1,9 @@
+batch
+
+module add --name=org.postgresql --resources=./postgresql-42.2.8.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=postgres:add(driver-name="postgres",driver-module-name="org.postgresql",driver-class-name=org.postgresql.Driver)
+
+data-source add --jndi-name=java:jboss/datasources/todo --name=TodoDS --connection-url=jdbc:postgresql://localhost:5432/TodoDS --driver-name=postgres --user-name=todo --password=MriwKRj83XVYwzM2
+
+run-batch
