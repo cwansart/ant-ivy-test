@@ -2,8 +2,9 @@
     <info organisation="de.cwansart" module="01_test"/>
     <dependencies>
         <!-- TODO: use conf for provided, test etc. -->
-        <dependency org="javax" name="javaee-api" rev="8.0.1"/>
+        <dependency org="javax" name="javaee-api" rev="8.0.1" conf="*->*,!sources,!javadoc"/>
 
-        <dependency org="org.omnifaces" name="omnifaces" rev="3.4"/>
+        <dependency org="org.omnifaces" name="omnifaces" rev="3.4" conf="*->*,!sources,!javadoc"/>
+        <dependency org="org.primefaces" name="primefaces" rev="7.0" conf="*->*,!sources,!javadoc"/>
     </dependencies>
 </ivy-module>

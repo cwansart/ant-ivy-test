@@ -26,6 +26,7 @@
         <war destfile="${dist}/test.war" webxml="src/main/webapp/WEB-INF/web.xml" >
             <fileset dir="src/main/webapp/html"/>
             <webinf dir="src/main/webapp/WEB-INF"/>
+            <metainf dir="src/main/webapp/META-INF"/>
             <zipfileset dir="src/main/resources/META-INF" prefix="WEB-INF/classes/META-INF"/>
             <lib dir="lib"/>
             <classes dir="build"/>
